@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "primeiro_jogador.h": "c",
+        "stdlib.h": "c"
+    }
+}

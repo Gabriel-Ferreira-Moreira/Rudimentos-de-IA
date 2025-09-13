@@ -1,0 +1,178 @@
+{
+  "main": {
+    "id": "557fb7c0381fe95a",
+    "type": "split",
+    "children": [
+      {
+        "id": "c2400386b5dc896f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3f8a6480f0dc7722",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Jogo da Velha/BOT Jogo da Velha.canvas",
+                "viewState": {
+                  "x": -446.77541353055506,
+                  "y": 369.458472639839,
+                  "zoom": -0.5931710424499619
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "BOT Jogo da Velha"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "17b733dadfbbf23a",
+    "type": "split",
+    "children": [
+      {
+        "id": "2f4bf6212dafc140",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "53a5c6f771faa87d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "f39c4573ea0259f4",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "0dda9ee323405ed8",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "right": {
+    "id": "526bd08d8d8e444b",
+    "type": "split",
+    "children": [
+      {
+        "id": "92db819db710caf8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "771f873f24149935",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Jogo da Velha/BOT Jogo da Velha.canvas",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos para BOT Jogo da Velha"
+            }
+          },
+          {
+            "id": "c1419a0710c484a8",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Jogo da Velha/BOT Jogo da Velha.canvas",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída para BOT Jogo da Velha"
+            }
+          },
+          {
+            "id": "87bf26d2bbc8804f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "3bdbcf52b532949e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Jogo da Velha/BOT Jogo da Velha.canvas",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário de BOT Jogo da Velha"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false
+    }
+  },
+  "active": "3f8a6480f0dc7722",
+  "lastOpenFiles": []
+}
