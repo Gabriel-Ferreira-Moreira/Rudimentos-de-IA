@@ -1,13 +1,36 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include <windows.h>
 #include <time.h>
-#include "C:\Jogo-da-Velha\inc\Primeiro_Jogador.h"
+
+#ifdef _WIN32
+    // ----------- Windows -----------
+    #include <windows.h>
+    #include "C:\\Jogo-da-Velha\\inc\\Primeiro_Jogador.h"
+    #include "C:\\Jogo-da-Velha\\inc\\Segundo_Jogador.h"
+    void wait(int s) {
+        Sleep(s * 1000); // Sleep usa milissegundos
+    }
+	void clear() {
+		system("cls"); // comando do Windows para limpar o terminal
+	}
+#else
+    // ----------- Linux -----------
+    #include <unistd.h>
+    #include "../inc/Primeiro_Jogador.h"
+    #include "../inc/Segundo_Jogador.h"
+    void wait(int s) {
+        sleep(s); // sleep já usa segundos
+    }
+	void clear() {
+		system("clear"); // comando do Linux para limpar o terminal
+	}
+#endif
 
 int M[3][3], vencedor = 0, numJogadas = 0;
 int a,b;
-char menu;
+char menu, Primeiro;
+
 
 void inicializa_Jogo()
 {
@@ -74,48 +97,25 @@ int verifica(int A[3][3])
 void joga1(int A[3][3], int numJogadas)
 {
 	int i, j;
-	bool sai = false, chance = false;
-
+	bool sai = false;
 	do
 	{
-	#if 0
-		printf("- - JOGADOR 1 - -\n");
+	if (Primeiro == '2'){
+		printf("- - JOGADOR - -\n");
 		printf("LINHA = ");
 		scanf("%d", &i);
 		printf("COLUNA = ");
 		scanf("%d", &j);
 		printf("- - - - - - - - -  \n");
-	#else
-	printf("- - BOT - -\n");
-	Sleep(1200); // pausa de 2000 ms = 2 s
-	if (numJogadas == 1)
+
+	}else	
 	{
-		Primeira_Jogada(&i, &j);
-		a = i; // Salvar jogada
-		b = j; // Salvar jogada
-	}else if (numJogadas == 3)
-	{
-		Terceira_Jogada(A, &i, &j);
-		a = i; // Salvar jogada
-		b = j; // Salvar jogada
-	} else if (numJogadas == 5)
-	{
-		Quinta_Jogada(A, &i, &j, a, b, chance);
-		a = i; // Salvar jogada
-		b = j; // Salvar jogada
-	} else if (numJogadas == 7)
-	{
-		Setima_Jogada(A, &i, &j, a, b, chance);
-		a = i; // Salvar jogada
-		b = j; // Salvar jogada
-	} else if (numJogadas == 9)
-	{
-		Nona_Jogada(A, &i, &j, a, b, chance);
-		a = i; // Salvar jogada
-		b = j; // Salvar jogada
+		bool chance = false;
+		Primeiro_Jogador(&i, &j, numJogadas, A, a, b, chance);
+		printf("- - BOT - -\n");
+		wait(1); 
 	}
 	
-	#endif
 		if ((A[i-1][j-1] != 0)||(i > 3)||(j>3)||(i<1)||(j<1))
 		{
 			printf("  JOGADA ILEGAL! Tente novamente! \n\n");
@@ -128,21 +128,32 @@ void joga1(int A[3][3], int numJogadas)
 		}
 	}
 	while (sai == false);
+	a = i; 
+	b = j;
 }
 
-void joga2(int A[3][3])
+void joga2(int A[3][3], int numJogadas)
 {
 	int i, j;
 	bool sai = false;
 	
 	do
 	{
-		printf("- - JOGADOR 2 - -\n");
+		if (Primeiro == '1'){
+		printf("- - JOGADOR - -\n");
 		printf("LINHA = ");
 		scanf("%d", &i);
 		printf("COLUNA = ");
 		scanf("%d", &j);
 		printf("- - - - - - - - -  \n");
+
+		}else 
+	{
+		bool chance = false;
+		Segundo_Jogador(&i, &j, numJogadas, A, a, b, chance);
+	}
+			printf("- - BOT - -\n");
+			wait(1);
 
 		if ((A[i-1][j-1] != 0)||(i > 3)||(j>3)||(i<1)||(j<1))
 		{
@@ -161,12 +172,15 @@ void joga2(int A[3][3])
 //PROGRAMA PRINCIPAL
 int main()
 {
+	clear();
 	srand(time(NULL)); // semente
-    inicializa_Jogo();
+	printf("Quem comeca jogando? \n1 - BOT \n2 - JOGADOR \n");
+	scanf(" %c", &Primeiro);
+	clear();
+	inicializa_Jogo();
 	mostra(M);
+	wait(1); 
 	vencedor = verifica(M);
-	printf("%d\n", vencedor);
-	system("cls"); // comando do Windows para limpar o terminal
 
 	do
 	{
@@ -191,7 +205,7 @@ int main()
 		}
 		
 		numJogadas++;
-		joga2(M);
+		joga2(M, numJogadas);
 		mostra(M);
 		vencedor = verifica(M);
 		if (vencedor == 2)

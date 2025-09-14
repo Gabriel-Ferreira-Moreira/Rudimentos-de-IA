@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "primeiro_jogador.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "windows.h": "c",
+        "time.h": "c",
+        "segundo_jogador.h": "c",
+        "stdbool.h": "c"
     }
 }
