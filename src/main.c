@@ -32,6 +32,7 @@ int a,b;
 char menu, Primeiro;
 
 
+
 void inicializa_Jogo()
 {
 	M[0][0] = 0; 	M[0][1] = 0; 	M[0][2] = 0;

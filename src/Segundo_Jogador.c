@@ -129,20 +129,27 @@ void Chance_Vitoria(int A[3][3], int *i, int *j, bool *chance) {
 }
 
 
-void Segunda_Jogada(int *a, int *b, int A[3][3])
+void Segunda_Jogada(int A[3][3], int *i, int *j, int a, int b, bool chance)
 {
-	// 1. Jogou no meio
-	if (A[1][1] == 1) { *a = 3; *b = 3; }  
-	// 2. Jogou nas laterais
-	else if (A[0][1] == 1 || A[1][0] == 1 || A[1][2] == 1 || A[2][1] == 1) 
-	{
-		if (A[0][1] == 1) { *a = 3; *b = 2; }
-		if (A[1][0] == 1) { *a = 2; *b = 3; }
-		if (A[1][2] == 1) { *a = 2; *b = 1; }
-		if (A[2][1] == 1) { *a = 1; *b = 2; }
-	}
-	// 3. Jogou nos cantos
-	else if (A[0][0] == 1 || A[0][2] == 1 || A[2][0] == 1 || A[2][2] == 1) { *a = 2; *b = 2; }  
+     Bloqueia_Adversario(A, &a, &b, &chance);
+     if(chance == true) // Se houver bloqueio necessário
+        {
+		    *i = a; *j = b;	return;
+        }else  
+        {                  
+            // 1. Jogou no meio
+            if (A[1][1] == 1) { *i = 3; *j = 3; }  
+            // 2. Jogou nas laterais
+            else if (A[0][1] == 1 || A[1][0] == 1 || A[1][2] == 1 || A[2][1] == 1) 
+            {
+                if (A[0][1] == 1) { *i = 3; *j = 2; }
+                if (A[1][0] == 1) { *i = 2; *j = 3; }
+                if (A[1][2] == 1) { *i = 2; *j = 1; }
+                if (A[2][1] == 1) { *i = 1; *j = 2; }
+            }
+            // 3. Jogou nos cantos
+            else if (A[0][0] == 1 || A[0][2] == 1 || A[2][0] == 1 || A[2][2] == 1) { *i = 2; *j = 2; }  
+        }
 }
 
 void Quarta_Jogada(int A[3][3], int *i, int *j, int a, int b, bool chance)
@@ -277,7 +284,7 @@ void Segundo_Jogador(int *i, int *j, int numJogadas, int A[3][3], int a, int b, 
 {
     if (numJogadas == 2)
     {
-        Segunda_Jogada(i, j, A);   // já são ponteiros, não precisa de &
+        Segunda_Jogada(A, i, j, a, b, chance); 
         a = *i; // Salvar jogada
         b = *j; // Salvar jogada
     }
