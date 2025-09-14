@@ -130,26 +130,20 @@ void Chance_Vitoria(int A[3][3], int *i, int *j, bool *chance) {
 
 
 void Segunda_Jogada(int A[3][3], int *i, int *j, int a, int b, bool chance)
-{
-     Bloqueia_Adversario(A, &a, &b, &chance);
-     if(chance == true) // Se houver bloqueio necessário
-        {
-		    *i = a; *j = b;	return;
-        }else  
-        {                  
-            // 1. Jogou no meio
-            if (A[1][1] == 1) { *i = 3; *j = 3; }  
-            // 2. Jogou nas laterais
-            else if (A[0][1] == 1 || A[1][0] == 1 || A[1][2] == 1 || A[2][1] == 1) 
-            {
-                if (A[0][1] == 1) { *i = 3; *j = 2; }
-                if (A[1][0] == 1) { *i = 2; *j = 3; }
-                if (A[1][2] == 1) { *i = 2; *j = 1; }
-                if (A[2][1] == 1) { *i = 1; *j = 2; }
-            }
-            // 3. Jogou nos cantos
-            else if (A[0][0] == 1 || A[0][2] == 1 || A[2][0] == 1 || A[2][2] == 1) { *i = 2; *j = 2; }  
-        }
+{            
+    // 1. Jogou no meio
+    if (A[1][1] == 1 ) { *i = 3; *j = 3; }  
+    // 2. Jogou nas laterais
+    else if (A[0][1] == 1 || A[1][0] == 1 || A[1][2] == 1 || A[2][1] == 1) 
+    {
+        if (A[0][1] == 1) { *i = 3; *j = 2; }
+        if (A[1][0] == 1) { *i = 2; *j = 3; }
+        if (A[1][2] == 1) { *i = 2; *j = 1; }
+        if (A[2][1] == 1) { *i = 1; *j = 2; }
+    }
+    // 3. Jogou nos cantos
+    else if (A[0][0] == 1 || A[0][2] == 1 || A[2][0] == 1 || A[2][2] == 1) { *i = 2; *j = 2; }  
+
 }
 
 void Quarta_Jogada(int A[3][3], int *i, int *j, int a, int b, bool chance)
@@ -173,32 +167,40 @@ void Quarta_Jogada(int A[3][3], int *i, int *j, int a, int b, bool chance)
             }
         }
     }
-    // 2) Se eu joguei no meio e o adversário (1) jogou do lado ou nos cantos do lado
+        // 2) Se eu joguei no meio e o adversário (1) jogou do lado ou nos cantos do lado
     else if (A[1][1] == 2 &&
-			((A[0][2] == 1 && A[2][2] == 1) ||
-				(A[0][0] == 1 && A[2][0] == 1) ||
-				(A[0][0] == 1 && A[0][2] == 1) ||
-				(A[2][0] == 1 && A[2][2] == 1))) 
-{
-		Bloqueia_Adversario(A, &a, &b, &chance);
-		*i = a; 
-		*j = b;	
-        if(chance == false) // Se não houver bloqueio necessário, jogar em qualquer posição livre
-        {
-            for(int row = 0; row < 3; row++) {
-                for(int col = 0; col < 3; col++) {
-                    if(A[row][col] == 0) {
-                        *i = row + 1;
-                        *j = col + 1;
-                        return;
+        ((A[0][2] == 1 && A[2][2] == 1) ||
+            (A[0][2] == 1 && A[1][2] == 1) ||
+            (A[0][2] == 1 && A[0][1] == 1) ||
+            (A[0][0] == 1 && A[2][0] == 1) ||
+            (A[0][0] == 1 && A[1][0] == 1) ||
+            (A[0][0] == 1 && A[0][1] == 1) ||
+            (A[2][0] == 1 && A[0][0] == 1) ||
+            (A[2][0] == 1 && A[2][1] == 1) ||
+            (A[2][0] == 1 && A[1][0] == 1) ||
+            (A[2][2] == 1 && A[0][2] == 1) ||
+            (A[2][2] == 1 && A[2][1] == 1) ||
+            (A[2][2] == 1 && A[1][2] == 1))){
+            Bloqueia_Adversario(A, &a, &b, &chance);
+            *i = a; *j = b;	
+            if(chance == false) // Se não houver bloqueio necessário, jogar em qualquer posição livre
+            {
+                for(int row = 0; row < 3; row++) 
+                {
+                    for(int col = 0; col < 3; col++) 
+                    {
+                        if(A[row][col] == 0) 
+                        {
+                            *i = row + 1;
+                            *j = col + 1;
+                            return;
+                        }
                     }
                 }
             }
-        }
-	}
 
     // 3) Se eu joguei no meio e o adversário (1) jogou na diagonal oposta ou lateral oposta
-    else if (A[1][1] == 2 && ( (A[0][0] == 1 && A[2][2] == 1) || (A[0][2] == 1 && A[2][0] == 1) 
+    }else if (A[1][1] == 2 && ( (A[0][0] == 1 && A[2][2] == 1) || (A[0][2] == 1 && A[2][0] == 1) 
                             || (A[0][0] == 1 && (A[0][1] == 1 || A[1][0] == 1)) 
                             || (A[0][2] == 1 && (A[0][1] == 1 || A[1][2] == 1)) 
                             || (A[2][0] == 1 && (A[1][0] == 1 || A[2][1] == 1)) 

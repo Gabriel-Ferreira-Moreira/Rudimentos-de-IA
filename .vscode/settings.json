@@ -5,6 +5,7 @@
         "windows.h": "c",
         "time.h": "c",
         "segundo_jogador.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "sdl_image.h": "c"
     }
 }
