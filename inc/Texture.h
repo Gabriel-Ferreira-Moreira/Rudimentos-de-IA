@@ -2,9 +2,9 @@
 #define JOGO_DA_VELHA_H
 
 #define SDL_MAIN_HANDLED
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
+#include "SDL.h"
+#include "SDL_image.h"
+#include "SDL_ttf.h"
 
 #define SIZE 600
 #define CELLS 3

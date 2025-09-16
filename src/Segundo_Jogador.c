@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include "../inc/BOT.h"
 #include <time.h>
+#ifdef _WIN32
+    #include "C:\\Jogo-da-Velha\\inc\\BOT.h"
+#else
+    #include "../inc/BOT.h"
+#endif
 
 void Bloqueia_Adversario(int A[3][3], int *i, int *j, bool *chance) {
     // Verificar linhas

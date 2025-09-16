@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include "../inc/BOT.h"
 #include <time.h>
+#ifdef _WIN32
+    #include "C:\\Jogo-da-Velha\\inc\\BOT.h"
+#else
+    #include "../inc/BOT.h"
+#endif
 
 void Chance_de_Vitoria(int A[3][3], int *i, int *j, bool *chance) {
     for (int row = 0; row < 3; row++) {
@@ -41,7 +45,13 @@ void Bloquear_Adversario(int A[3][3], int *i, int *j) {
     if (A[0][2] == 2 && A[1][1] == 0 && A[2][0] == 2) { *i = 2; *j = 2; return; }
     if (A[0][2] == 2 && A[1][1] == 2 && A[2][0] == 0) { *i = 3; *j = 1; return; }
 }
-
+void Primeira_Jogada(int *i, int *j) {
+    int r = rand() % 4;
+    if (r == 0) { *i = 1; *j = 1; }
+    else if (r == 1) { *i = 1; *j = 3; }
+    else if (r == 2) { *i = 3; *j = 1; }
+    else { *i = 3; *j = 3; }
+}
 void Jogada_Aleatoria(int A[3][3], int *i, int *j) {
     int emptyCells[9][2];
     int count = 0;
@@ -60,13 +70,7 @@ void Jogada_Aleatoria(int A[3][3], int *i, int *j) {
         *j = emptyCells[r][1];
     }
 }
-void Primeira_Jogada(int *i, int *j) {
-    int r = rand() % 4;
-    if (r == 0) { *i = 1; *j = 1; }
-    else if (r == 1) { *i = 1; *j = 3; }
-    else if (r == 2) { *i = 3; *j = 1; }
-    else { *i = 3; *j = 3; }
-}
+
 void Terceira_Jogada(int A[3][3], int *i, int *j, int a, int b) {
     if (A[1][1] == 2) {
         if (a == 1 && b == 3) { *i = 3; *j = 1; }

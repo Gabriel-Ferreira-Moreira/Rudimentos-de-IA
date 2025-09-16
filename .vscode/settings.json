@@ -9,6 +9,8 @@
         "sdl_image.h": "c",
         "bot.h": "c",
         "stdio.h": "c",
-        "algorithm": "c"
+        "algorithm": "c",
+        "texture.h": "c",
+        "sdl_ttf.h": "c"
     }
 }

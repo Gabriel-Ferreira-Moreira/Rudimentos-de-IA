@@ -6,8 +6,7 @@
 #ifdef _WIN32
     // ----------- Windows -----------
     #include <windows.h>
-    #include "C:\\Jogo-da-Velha\\inc\\Primeiro_Jogador.h"
-    #include "C:\\Jogo-da-Velha\\inc\\Segundo_Jogador.h"
+    #include "C:\\Jogo-da-Velha\\inc\\BOT.h"
     void wait(int s) {
         Sleep(s * 1000); // Sleep usa milissegundos
     }
@@ -28,7 +27,7 @@
 
 int M[3][3], vencedor = 0, numJogadas = 0;
 int a,b;
-char menu, Primeiro;
+char menu, Primeiro, Dificuldade='2';
 
 
 
@@ -111,7 +110,7 @@ void joga1(int A[3][3], int numJogadas)
 	}else	
 	{
 		bool chance = false;
-		Primeiro_Jogador(&i, &j, numJogadas, A, a, b, chance);
+		Primeiro_Jogador(&i, &j, numJogadas, A, a, b, chance,Dificuldade);
 		printf("- - BOT - -\n");
 		wait(1); 
 	}
@@ -148,26 +147,29 @@ void joga2(int A[3][3], int numJogadas)
 		printf("- - - - - - - - -  \n");
 
 		}else 
-	{
-		bool chance = false;
-		Segundo_Jogador(&i, &j, numJogadas, A, a, b, chance);
-	}
-			printf("- - BOT - -\n");
-			wait(1);
+		{
+			bool chance = false;
+			Segundo_Jogador(&i, &j, numJogadas, A, a, b, chance,Dificuldade);
+				printf("- - BOT - -\n");
+				wait(1);
 
-		if ((A[i-1][j-1] != 0)||(i > 3)||(j>3)||(i<1)||(j<1))
-		{
-			printf("  JOGADA ILEGAL! Tente novamente! \n\n");
-			mostra(M);
-		}
-		else
-		{
-			A[i-1][j-1] = 2;
-			sai = true;
+			if ((A[i-1][j-1] != 0)||(i > 3)||(j>3)||(i<1)||(j<1))
+			{
+				printf("  JOGADA ILEGAL! Tente novamente! \n\n");
+				mostra(M);
+			}
+			else
+			{
+				A[i-1][j-1] = 2;
+				sai = true;
+			}
 		}
 	}
 	while (sai == false);
+	a = i; 
+	b = j;
 }
+
 
 //PROGRAMA PRINCIPAL
 int main()

@@ -2,22 +2,22 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <time.h>
-#include "../inc/Texture.h"
+//#include "../inc/Texture.h"
+#include "C:\\Jogo-da-Velha\\inc\\Texture.h"
 
 #ifdef _WIN32
-    #include <windows.h>
-    #include "C:\\Jogo-da-Velha\\inc\\Primeiro_Jogador.h"
-    #include "C:\\Jogo-da-Velha\\inc\\Segundo_Jogador.h"
-    void wait(int s) { Sleep(s * 1000); }
+    #include "C:\\Jogo-da-Velha\\inc\\BOT.h"
+    void wait(int s) { SDL_Delay(s * 1000); }
 #else
     #include <unistd.h>
     #include "../inc/BOT.h"
     void wait(int s) { sleep(s); }
 #endif
 
-int M[3][3], vencedor = 0, numJogadas = 0;
+int M[3][3], vencedor, numJogadas;
 int a,b;
 char menu, Primeiro, Dificuldade='0';
+
 
 
 void inicializa_Jogo(){
@@ -105,8 +105,8 @@ int main(int argc, char* argv[]) {
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (!renderer) { printf("Erro ao criar renderer: %s\n", SDL_GetError()); return 1; }
 
-    font = TTF_OpenFont("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",28);
-    if (!font) { printf("Erro ao carregar fonte: %s\n", TTF_GetError()); return 1; }
+    font = TTF_OpenFont("DejaVuSans.ttf",28);
+    //if (!font) { printf("Erro ao carregar fonte: %s\n", TTF_GetError()); return 1; }
 
     bool rodando = true;
     while (rodando) {
@@ -150,8 +150,8 @@ int main(int argc, char* argv[]) {
         vencedor=verifica();
 
         while(vencedor==0){
-            numJogadas++;
             joga1();
+            numJogadas++;
             vencedor=verifica();
             if(vencedor==1) break;
             if(numJogadas==9) break;

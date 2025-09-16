@@ -1,12 +1,19 @@
 #define SDL_MAIN_HANDLED
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
-#include "../inc/Texture.h"
+#include "SDL.h"
+#include "SDL_image.h"
+#include "SDL_ttf.h"
+//#include "../inc/Texture.h"
+#include "Texture.h"
 #include <stdbool.h>
+#include <stdio.h>
 
-#define SIZE 600
 #define CELLS 3
+
+#ifdef SIZE
+#undef SIZE
+#endif
+#define SIZE 600
+
 
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
