@@ -17,8 +17,7 @@
 #else
     // ----------- Linux -----------
     #include <unistd.h>
-    #include "../inc/Primeiro_Jogador.h"
-    #include "../inc/Segundo_Jogador.h"
+	#include "../inc/BOT.h"
     void wait(int s) {
         sleep(s); // sleep já usa segundos
     }

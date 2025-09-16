@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include "Segundo_Jogador.h"
+#include "../inc/BOT.h"
 #include <time.h>
 
 void Bloqueia_Adversario(int A[3][3], int *i, int *j, bool *chance) {
@@ -127,7 +127,6 @@ void Chance_Vitoria(int A[3][3], int *i, int *j, bool *chance) {
         *i = 1; *j = 3; return;
     }
 }
-
 
 void Segunda_Jogada(int A[3][3], int *i, int *j, int a, int b, bool chance)
 {            
@@ -282,30 +281,54 @@ void Oitava_Jogada(int A[3][3], int *i, int *j, int a, int b, bool chance)
         }
 	}
 }
-void Segundo_Jogador(int *i, int *j, int numJogadas, int A[3][3], int a, int b, bool chance)
+void Segundo_Jogador(int *i, int *j, int numJogadas, int A[3][3], int a, int b, bool chance, char Dificuldade)
 {
-    if (numJogadas == 2)
-    {
-        Segunda_Jogada(A, i, j, a, b, chance); 
-        a = *i; // Salvar jogada
-        b = *j; // Salvar jogada
+    if (Dificuldade == '0'){ // Fácil
+        if (numJogadas == 2) {
+            Jogada_Aleatoria(A, i, j);
+        } else if (numJogadas == 4) {
+            Jogada_Aleatoria(A, i, j);
+        } else if (numJogadas == 6) {
+            Jogada_Aleatoria(A, i, j);
+        } else if (numJogadas == 8) {
+            Jogada_Aleatoria(A, i, j);
+        }
     }
-    else if (numJogadas == 4)
-    {
-        Quarta_Jogada(A, i, j, a, b, chance);
-        a = *i; // Salvar jogada
-        b = *j; // Salvar jogada
+    else if (Dificuldade == '1'){ // Médio
+        if (numJogadas == 2) {
+            Jogada_Aleatoria(A, i, j);
+        } else if (numJogadas == 4) {
+            Jogada_Aleatoria(A, i, j);
+        } else if (numJogadas == 6) {
+            Jogada_Aleatoria(A, i, j);
+        } else if (numJogadas == 8) {
+            Jogada_Aleatoria(A, i, j);
+        }
     }
-    else if (numJogadas == 6)
-    {
-        Sexta_Jogada(A, i, j, a, b, chance);
-        a = *i; // Salvar jogada
-        b = *j; // Salvar jogada
-    }
-    else if (numJogadas == 8)
-    {
-        Oitava_Jogada(A, i, j, a, b, chance);
-        a = *i; // Salvar jogada
-        b = *j; // Salvar jogada
+    else if (Dificuldade == '2'){ // Impossível
+        if (numJogadas == 2)
+        {
+            Segunda_Jogada(A, i, j, a, b, chance); 
+            a = *i; // Salvar jogada
+            b = *j; // Salvar jogada
+        }
+        else if (numJogadas == 4)
+        {
+            Quarta_Jogada(A, i, j, a, b, chance);
+            a = *i; // Salvar jogada
+            b = *j; // Salvar jogada
+        }
+        else if (numJogadas == 6)
+        {
+            Sexta_Jogada(A, i, j, a, b, chance);
+            a = *i; // Salvar jogada
+            b = *j; // Salvar jogada
+        }
+        else if (numJogadas == 8)
+        {
+            Oitava_Jogada(A, i, j, a, b, chance);
+            a = *i; // Salvar jogada
+            b = *j; // Salvar jogada
+        }
     }
 }

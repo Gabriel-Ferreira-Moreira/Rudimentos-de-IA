@@ -6,6 +6,9 @@
         "time.h": "c",
         "segundo_jogador.h": "c",
         "stdbool.h": "c",
-        "sdl_image.h": "c"
+        "sdl_image.h": "c",
+        "bot.h": "c",
+        "stdio.h": "c",
+        "algorithm": "c"
     }
 }

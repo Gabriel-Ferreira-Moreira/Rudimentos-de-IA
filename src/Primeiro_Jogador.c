@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include "Primeiro_Jogador.h"
+#include "../inc/BOT.h"
+#include <time.h>
 
 void Chance_de_Vitoria(int A[3][3], int *i, int *j, bool *chance) {
     for (int row = 0; row < 3; row++) {
@@ -41,7 +42,24 @@ void Bloquear_Adversario(int A[3][3], int *i, int *j) {
     if (A[0][2] == 2 && A[1][1] == 2 && A[2][0] == 0) { *i = 3; *j = 1; return; }
 }
 
-
+void Jogada_Aleatoria(int A[3][3], int *i, int *j) {
+    int emptyCells[9][2];
+    int count = 0;
+    for (int row = 0; row < 3; row++) {
+        for (int col = 0; col < 3; col++) {
+            if (A[row][col] == 0) {
+                emptyCells[count][0] = row + 1;
+                emptyCells[count][1] = col + 1;
+                count++;
+            }
+        }
+    }
+    if (count > 0) {
+        int r = rand() % count;
+        *i = emptyCells[r][0];
+        *j = emptyCells[r][1];
+    }
+}
 void Primeira_Jogada(int *i, int *j) {
     int r = rand() % 4;
     if (r == 0) { *i = 1; *j = 1; }
@@ -129,16 +147,42 @@ void Nona_Jogada(int A[3][3], int *i, int *j, int a, int b, bool chance)
 }
 
 
-void Primeiro_Jogador(int *i, int *j, int numJogadas, int A[3][3], int a, int b, bool chance) {
-    if (numJogadas == 1) {
-        Primeira_Jogada(i, j);
-    } else if (numJogadas == 3) {
-        Terceira_Jogada(A, i, j, a, b);
-    } else if (numJogadas == 5) {
-        Quinta_Jogada(A, i, j, a, b, chance);
-    } else if (numJogadas == 7) {
-        Setima_Jogada(A, i, j, a, b, chance);
-    } else if (numJogadas == 9) {
-        Nona_Jogada(A, i, j, a, b, chance);
-    }
+void Primeiro_Jogador(int *i, int *j, int numJogadas, int A[3][3], int a, int b, bool chance, char Dificuldade) 
+{
+    if (Dificuldade == '0')
+        if (numJogadas == 1) {
+            Jogada_Aleatoria(A, i, j);
+        } else if (numJogadas == 3) {
+            Jogada_Aleatoria(A, i, j);
+        } else if (numJogadas == 5) {
+            Jogada_Aleatoria(A, i, j);
+        } else if (numJogadas == 7) {
+            Jogada_Aleatoria(A, i, j);
+        } else if (numJogadas == 9) {
+            Jogada_Aleatoria(A, i, j);
+        }
+    else if (Dificuldade == '1')
+        if (numJogadas == 1) {
+            Jogada_Aleatoria(A, i, j);
+        } else if (numJogadas == 3) {
+            Jogada_Aleatoria(A, i, j);
+        } else if (numJogadas == 5) {
+            Jogada_Aleatoria(A, i, j);
+        } else if (numJogadas == 7) {
+            Jogada_Aleatoria(A, i, j);
+        } else if (numJogadas == 9) {
+            Jogada_Aleatoria(A, i, j);
+        }
+    else if (Dificuldade == '2')
+        if (numJogadas == 1) {
+            Primeira_Jogada(i, j);
+        } else if (numJogadas == 3) {
+            Terceira_Jogada(A, i, j, a, b);
+        } else if (numJogadas == 5) {
+            Quinta_Jogada(A, i, j, a, b, chance);
+        } else if (numJogadas == 7) {
+            Setima_Jogada(A, i, j, a, b, chance);
+        } else if (numJogadas == 9) {
+            Nona_Jogada(A, i, j, a, b, chance);
+        }
 }

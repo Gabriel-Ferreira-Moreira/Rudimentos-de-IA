@@ -22,5 +22,8 @@ extern int M[CELLS][CELLS];
 
 // Funções
 void renderiza();
+int mostraMenu(SDL_Renderer* renderer);
+int MenuDificuldade(SDL_Renderer* renderer);
+
 
 #endif // JOGO_DA_VELHA_H
