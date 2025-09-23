@@ -3,14 +3,14 @@
 #include <stdlib.h>
 #include <time.h>
 //#include "../inc/Texture.h"
-#include "C:\\Jogo-da-Velha\\inc\\Texture.h"
+#include "Texture.h"
 
 #ifdef _WIN32
-    #include "C:\\Jogo-da-Velha\\inc\\BOT.h"
+    #include "BOT.h"
     void wait(int s) { SDL_Delay(s * 1000); }
 #else
     #include <unistd.h>
-    #include "../inc/BOT.h"
+    #include "BOT.h"
     void wait(int s) { sleep(s); }
 #endif
 

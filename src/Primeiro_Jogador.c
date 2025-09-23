@@ -4,9 +4,9 @@
 #include <time.h>
 
 #ifdef _WIN32
-    #include "C:\\Jogo-da-Velha\\inc\\BOT.h"
+    #include "BOT.h"
 #else
-    #include "../inc/BOT.h"
+    #include "BOT.h"
 #endif
 
 void Chance_de_Vitoria(int A[3][3], int *i, int *j, bool *chance) {

@@ -6,7 +6,7 @@
 #ifdef _WIN32
     // ----------- Windows -----------
     #include <windows.h>
-    #include "C:\\Jogo-da-Velha\\inc\\BOT.h"
+    #include "BOT.h"
     void wait(int s) {
         Sleep(s * 1000); // Sleep usa milissegundos
     }
@@ -16,7 +16,7 @@
 #else
     // ----------- Linux -----------
     #include <unistd.h>
-	#include "../inc/BOT.h"
+	#include "BOT.h"
     void wait(int s) {
         sleep(s); // sleep já usa segundos
     }
