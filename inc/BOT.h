@@ -9,6 +9,7 @@ void Chance_de_Vitoria(int A[3][3], int *i, int *j, bool *chance);
 void Bloquear_Adversario(int A[3][3], int *i, int *j);
 
 void Jogada_Aleatoria(int A[3][3], int *i, int *j);
+void Jogada_Aleatorias(int A[3][3], int *i, int *j);
 void Primeira_Jogada(int *i, int *j);
 void Terceira_Jogada(int A[3][3], int *i, int *j, int a, int b);
 void Quinta_Jogada(int A[3][3], int *i, int *j, int a, int b, bool chance);

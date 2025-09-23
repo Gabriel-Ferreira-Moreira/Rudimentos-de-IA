@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <time.h>
+
 #ifdef _WIN32
     #include "C:\\Jogo-da-Velha\\inc\\BOT.h"
 #else
@@ -46,13 +47,17 @@ void Bloquear_Adversario(int A[3][3], int *i, int *j) {
     if (A[0][2] == 2 && A[1][1] == 2 && A[2][0] == 0) { *i = 3; *j = 1; return; }
 }
 void Primeira_Jogada(int *i, int *j) {
+    #if 1
     int r = rand() % 4;
     if (r == 0) { *i = 1; *j = 1; }
     else if (r == 1) { *i = 1; *j = 3; }
     else if (r == 2) { *i = 3; *j = 1; }
     else { *i = 3; *j = 3; }
+    #else
+    *i=1; *j=1; return;
+    #endif
 }
-void Jogada_Aleatoria(int A[3][3], int *i, int *j) {
+void Jogada_Aleatoria(int A[3][3], int *i, int *j){
     int emptyCells[9][2];
     int count = 0;
     for (int row = 0; row < 3; row++) {
@@ -69,6 +74,17 @@ void Jogada_Aleatoria(int A[3][3], int *i, int *j) {
         *i = emptyCells[r][0];
         *j = emptyCells[r][1];
     }
+}
+void Jogada_Aleatorias(int A[3][3], int *i, int *j){
+ for(int row = 0; row < 3; row++) {
+                for(int col = 0; col < 3; col++) {
+                    if(A[row][col] == 0) {
+                        *i = row + 1;
+                        *j = col + 1;
+                        return;
+                    }
+                }
+            }
 }
 
 void Terceira_Jogada(int A[3][3], int *i, int *j, int a, int b) {
@@ -154,39 +170,47 @@ void Nona_Jogada(int A[3][3], int *i, int *j, int a, int b, bool chance)
 void Primeiro_Jogador(int *i, int *j, int numJogadas, int A[3][3], int a, int b, bool chance, char Dificuldade) 
 {
     if (Dificuldade == '0')
-        if (numJogadas == 1) {
-            Jogada_Aleatoria(A, i, j);
-        } else if (numJogadas == 3) {
-            Jogada_Aleatoria(A, i, j);
-        } else if (numJogadas == 5) {
-            Jogada_Aleatoria(A, i, j);
-        } else if (numJogadas == 7) {
-            Jogada_Aleatoria(A, i, j);
-        } else if (numJogadas == 9) {
-            Jogada_Aleatoria(A, i, j);
-        }
+    {
+        if (numJogadas < 2) {
+                    Jogada_Aleatoria(A, i, j);
+                } else if (numJogadas < 4) {
+                    Jogada_Aleatoria(A, i, j);
+                } else if (numJogadas < 6) {
+                    Jogada_Aleatoria(A, i, j);
+                } else if (numJogadas < 8) {
+                    Jogada_Aleatoria(A, i, j);
+                } else if (numJogadas < 10) {
+                    Jogada_Aleatoria(A, i, j);
+                }
+    }
     else if (Dificuldade == '1')
-        if (numJogadas == 1) {
-            Jogada_Aleatoria(A, i, j);
-        } else if (numJogadas == 3) {
-            Jogada_Aleatoria(A, i, j);
-        } else if (numJogadas == 5) {
-            Jogada_Aleatoria(A, i, j);
-        } else if (numJogadas == 7) {
-            Jogada_Aleatoria(A, i, j);
-        } else if (numJogadas == 9) {
-            Jogada_Aleatoria(A, i, j);
-        }
+    {
+            int diff=1;
+         if (numJogadas < 2) {
+                    Jogada_Aleatorias(A, i, j);
+                } else if (numJogadas < 4) {
+                    Jogada_Aleatorias(A, i, j);
+                } else if (numJogadas < 6) {
+                    Jogada_Aleatorias(A, i, j);
+                } else if (numJogadas < 8) {
+                    Jogada_Aleatorias(A, i, j);
+                } else if (numJogadas < 10) {
+                    Jogada_Aleatorias(A, i, j);
+                }
+    }
     else if (Dificuldade == '2')
-        if (numJogadas == 1) {
-            Primeira_Jogada(i, j);
-        } else if (numJogadas == 3) {
-            Terceira_Jogada(A, i, j, a, b);
-        } else if (numJogadas == 5) {
-            Quinta_Jogada(A, i, j, a, b, chance);
-        } else if (numJogadas == 7) {
-            Setima_Jogada(A, i, j, a, b, chance);
-        } else if (numJogadas == 9) {
-            Nona_Jogada(A, i, j, a, b, chance);
-        }
+    {
+        if (numJogadas < 2) {
+                    Primeira_Jogada(i, j);
+                } else if (numJogadas < 4) {
+                    Terceira_Jogada(A, i, j, a, b);
+                } else if (numJogadas < 6) {
+                    Quinta_Jogada(A, i, j, a, b, chance);
+                } else if (numJogadas < 8) {
+                    Setima_Jogada(A, i, j, a, b, chance);
+                } else if (numJogadas < 10) {
+                    Nona_Jogada(A, i, j, a, b, chance);
+                }
+    }
 }
+

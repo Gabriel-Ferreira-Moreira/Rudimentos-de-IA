@@ -105,7 +105,7 @@ int main(int argc, char* argv[]) {
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (!renderer) { printf("Erro ao criar renderer: %s\n", SDL_GetError()); return 1; }
 
-    font = TTF_OpenFont("DejaVuSans.ttf",28);
+    font = TTF_OpenFont("bin/DejaVuSans.ttf",28);
     //if (!font) { printf("Erro ao carregar fonte: %s\n", TTF_GetError()); return 1; }
 
     bool rodando = true;

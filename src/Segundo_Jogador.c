@@ -288,47 +288,47 @@ void Oitava_Jogada(int A[3][3], int *i, int *j, int a, int b, bool chance)
 void Segundo_Jogador(int *i, int *j, int numJogadas, int A[3][3], int a, int b, bool chance, char Dificuldade)
 {
     if (Dificuldade == '0'){ // Fácil
-        if (numJogadas == 2) {
+        if (numJogadas < 3) {
             Jogada_Aleatoria(A, i, j);
-        } else if (numJogadas == 4) {
+        } else if (numJogadas < 5) {
             Jogada_Aleatoria(A, i, j);
-        } else if (numJogadas == 6) {
+        } else if (numJogadas < 7) {
             Jogada_Aleatoria(A, i, j);
-        } else if (numJogadas == 8) {
+        } else if (numJogadas < 9) {
             Jogada_Aleatoria(A, i, j);
         }
     }
     else if (Dificuldade == '1'){ // Médio
-        if (numJogadas == 2) {
+        if (numJogadas < 3) {
             Jogada_Aleatoria(A, i, j);
-        } else if (numJogadas == 4) {
+        } else if (numJogadas < 5) {
             Jogada_Aleatoria(A, i, j);
-        } else if (numJogadas == 6) {
+        } else if (numJogadas < 7) {
             Jogada_Aleatoria(A, i, j);
-        } else if (numJogadas == 8) {
+        } else if (numJogadas < 9) {
             Jogada_Aleatoria(A, i, j);
         }
     }
     else if (Dificuldade == '2'){ // Impossível
-        if (numJogadas == 2)
+        if (numJogadas < 3)
         {
             Segunda_Jogada(A, i, j, a, b, chance); 
             a = *i; // Salvar jogada
             b = *j; // Salvar jogada
         }
-        else if (numJogadas == 4)
+        else if (numJogadas < 5)
         {
             Quarta_Jogada(A, i, j, a, b, chance);
             a = *i; // Salvar jogada
             b = *j; // Salvar jogada
         }
-        else if (numJogadas == 6)
+        else if (numJogadas < 7)
         {
             Sexta_Jogada(A, i, j, a, b, chance);
             a = *i; // Salvar jogada
             b = *j; // Salvar jogada
         }
-        else if (numJogadas == 8)
+        else if (numJogadas < 9)
         {
             Oitava_Jogada(A, i, j, a, b, chance);
             a = *i; // Salvar jogada
