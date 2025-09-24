@@ -105,7 +105,7 @@ int main(int argc, char* argv[]) {
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (!renderer) { printf("Erro ao criar renderer: %s\n", SDL_GetError()); return 1; }
 
-    font = TTF_OpenFont("bin/DejaVuSans.ttf",28);
+    font = TTF_OpenFont("C:/Jogo-da-Velha/build/bin/DejaVuSans.ttf",28);
     //if (!font) { printf("Erro ao carregar fonte: %s\n", TTF_GetError()); return 1; }
 
     bool rodando = true;
@@ -133,9 +133,9 @@ int main(int argc, char* argv[]) {
 
         SDL_SetWindowSize(window, SIZE, SIZE);
 
-        SDL_Surface* boardSurf=IMG_Load("../Image/Jogo_Da_Velha.jpg");
-        SDL_Surface* xSurf=IMG_Load("../Image/Jogador_1.png");
-        SDL_Surface* oSurf=IMG_Load("../Image/Jogador_2.png");
+        SDL_Surface* boardSurf=IMG_Load("C:/Jogo-da-Velha/Image/Jogo_Da_Velha.jpg");
+        SDL_Surface* xSurf=IMG_Load("C:/Jogo-da-Velha/Image/Jogador_1.png");
+        SDL_Surface* oSurf=IMG_Load("C:/Jogo-da-Velha/Image/Jogador_2.png");
         if (!boardSurf || !xSurf || !oSurf) {
             printf("Erro ao carregar imagens: %s\n", IMG_GetError());
             rodando = false; break;

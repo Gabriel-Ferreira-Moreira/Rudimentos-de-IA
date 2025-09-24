@@ -32,7 +32,7 @@ typedef struct {
 
 // Função para exibir menu e capturar escolha
 int mostraMenu(SDL_Renderer* renderer) {
-    SDL_Surface* menuSurf = IMG_Load("../../Image/Menu.png");
+    SDL_Surface* menuSurf = IMG_Load("C:/Jogo-da-Velha/Image/Menu.png");
     if (!menuSurf) { printf("Erro carregando menu: %s\n", IMG_GetError()); exit(1); }
     SDL_Texture* menuTex = SDL_CreateTextureFromSurface(renderer, menuSurf);
     SDL_FreeSurface(menuSurf);
@@ -110,7 +110,7 @@ void renderiza() {
 }
 
 int MenuDificuldade(SDL_Renderer* renderer) {
-    SDL_Surface* menuSurf = IMG_Load("../Image/Dificuldade.png");
+    SDL_Surface* menuSurf = IMG_Load("C:/Jogo-da-Velha/Image/Dificuldade.png");
     if (!menuSurf) {
         printf("Erro carregando Dificuldade: %s\n", IMG_GetError());
         exit(1);
