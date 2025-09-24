@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <time.h>
-//#include "../inc/Texture.h"
+//#include "Texture.h"
 #include "Texture.h"
 
 #ifdef _WIN32
